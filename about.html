@@ -1,77 +1,194 @@
-
-
-
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Fatimah Mukhtar - Portfolio</title>
-<style>
-body {
-font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-line-height: 1.6;
-color: #333;
-max-width: 800px;
-margin: 0 auto;
-padding: 20px;
-background-color: #f4f7f6;
-}
-.header {
-text-align: center;
-background: #2c3e50;
-color: white;
-padding: 40px 20px;
-border-radius: 10px;
-margin-bottom: 30px;
-}
-img {
-border-radius: 50%; /* تجعل الصورة دائرية */
-border: 5px solid white;
-box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-margin-top: 20px;
-}
-h2 {
-color: #2c3e50;
-border-bottom: 2px solid #2c3e50;
-padding-bottom: 10px;
-}
-.content-box {
-background: white;
-padding: 25px;
-border-radius: 10px;
-box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-}
-ul {
-list-style-type: square;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fatimah Mukhtar - Portfolio</title>
+    <style>
+        /* General Page Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f4f7f6;
+            text-align: left; /* English alignment */
+        }
+
+        /* Dark Navy Header Section */
+        .header {
+            text-align: center;
+            background: #2c3e50;
+            color: white;
+            padding: 40px 20px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+        .header img {
+            border-radius: 15px; /* Square with rounded corners */
+            border: 4px solid white;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            margin-top: 10px;
+            object-fit: cover;
+        }
+
+        /* Titles with Orange Left Border */
+        h2 {
+            color: #2c3e50;
+            border-left: 5px solid #e67e22; 
+            padding-left: 15px;
+            margin-top: 30px;
+        }
+        h3 {
+            color: #34495e;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        /* Professional White Content Boxes */
+        .content-box {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 25px;
+        }
+
+        /* Technical Skills Tags */
+        .skill-tag {
+            display: inline-block;
+            background: #34495e;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            margin: 5px;
+            font-size: 0.9em;
+        }
+
+        /* List Styling with Orange Bullets */
+        ul {
+            list-style-type: none;
+            padding-left: 20px;
+        }
+        ul li::before {
+            content: "•"; 
+            color: #e67e22;
+            font-weight: bold;
+            display: inline-block; 
+            width: 1em;
+            margin-left: -1em;
+        }
+
+        /* Highlighted Project Link Section */
+        .project-link {
+            text-align: center;
+            margin: 35px 0;
+            padding: 20px;
+            background: #ecf0f1;
+            border-radius: 10px;
+        }
+        .project-link a {
+            color: #e67e22;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* Contact Details inside the box */
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .contact-icon {
+            margin-right: 15px;
+            font-size: 1.2em;
+        }
+
+        /* Professional Footer */
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            color: #888;
+            font-size: 0.85em;
+            letter-spacing: 0.5px;
+        }
+    </style>
 </head>
 <body>
 
-<div class="header">
-<h1>Welcome to My Website</h1>
-<p>Computer Engineering Student</p>
-<img src="me.jpg" alt="Fatimah" width="180">
-</div>
+    <div class="header">
+        <h1>Welcome to My Website</h1>
+        <p>Computer Engineering Student | Future Tech Innovator</p>
+        <img src="me.jpg" alt="Fatimah" width="160" height="160">
+    </div>
 
-<div class="content-box">
-<h2>About Me</h2>
-<p>My name is <strong>Fatimah Mukhtar</strong>. I am a passionate Computer Engineering student interested in building the future of technology.</p>
+    <div class="content-box">
+        <h2>About Me</h2>
+        <p>
+            My name is <strong>Fatimah Mukhtar</strong>. I am a dedicated Computer Engineering student driven by a passion for solving complex problems and building innovative digital solutions. 
+            Currently, I am expanding my expertise in <strong>AI</strong>, <strong>Cybersecurity</strong>, and <strong>Web Technologies</strong> to create secure and efficient systems.
+        </p>
+    </div>
 
-<h2>Resume</h2>
-<ul>
-<li>Computer Engineering Student</li>
-<li>Interested in Artificial Intelligence</li>
-<li>Interested in Web Development</li>
-</ul>
+    <div class="content-box">
+        <h2>Education & Experience</h2>
+        <p><strong>Bachelor of Computer Engineering</strong></p>
+        <p>2022 - Present (4th Year)</p>
+        <p>Focusing on software development, artificial intelligence, and network systems.</p>
+        <br>
+        <h3>Professional Experience</h3>
+        <ul>
+            <li>IT Support Role - Technical troubleshooting and system maintenance.</li>
+        </ul>
+    </div>
 
-<h2>Hobbies</h2>
-<p>Coding, Problem Solving, and Exploring new Technologies.</p>
-</div>
-<center>
-   <p>My Yoga Project: <a href="yoga/index.html">Click here to view</a></p>
-</center>
+    <div class="content-box">
+        <h2>Technical Skills</h2>
+        <div>
+            <span class="skill-tag">JavaScript</span>
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">HTML/CSS</span>
+            <span class="skill-tag">Cybersecurity Basics</span>
+            <span class="skill-tag">Problem Solving</span>
+        </div>
+    </div>
+
+    <div class="content-box">
+        <h2>Hobbies & Interests</h2>
+        <h3>Professional Interests</h3>
+        <ul>
+            <li>Cybersecurity & Network Defense</li>
+            <li>Front-end Web Development</li>
+        </ul>
+        <br>
+        <h3>Personal Hobbies</h3>
+        <ul>
+            <li>Reading tech blogs and books to stay updated.</li>
+            <li>Chilling with Family on weekends to recharge.</li>
+        </ul>
+    </div>
+
+    
+
+    <div class="content-box">
+        <h2>Contact</h2>
+        <div class="contact-item">
+            <span class="contact-icon">📍</span>
+            <span>Lefkosa, North Cyprus</span>
+        </div>
+        <div class="contact-item">
+            <span class="contact-icon">✉️</span>
+            <a href="mailto:fatimahmukhtar2@gmail.com" style="color: inherit; text-decoration: none;">fatimahmukhtar2@gmail.com</a>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>FATIMAH MUKHTAR | Computer Engineering Student</p>
+        <p>4th Year | AI & Web Development Enthusiast</p>
+    </div>
+
 </body>
 </html>
-
-
