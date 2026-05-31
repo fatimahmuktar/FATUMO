@@ -1,0 +1,332 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* Travel-themed color palette - Purple & Magenta */
+@theme inline {
+  --color-purple-600: #7c3aed;
+  --color-pink-600: #d946ef;
+  --color-pink-500: #ec4899;
+  --color-travel-light: #faf5ff;
+  --color-travel-dark: #2d1b4e;
+  
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  --primary: #7c3aed;
+  --primary-foreground: #ffffff;
+  --sidebar-primary: #7c3aed;
+  --sidebar-primary-foreground: #ffffff;
+  --chart-1: #d946ef;
+  --chart-2: #7c3aed;
+  --chart-3: #ec4899;
+  --chart-4: #a855f7;
+  --chart-5: #2d1b4e;
+  --radius: 0.65rem;
+  --background: #ffffff;
+  --foreground: #2d1b4e;
+  --card: #faf5ff;
+  --card-foreground: #2d1b4e;
+  --popover: #ffffff;
+  --popover-foreground: #2d1b4e;
+  --secondary: #d946ef;
+  --secondary-foreground: #ffffff;
+  --muted: #f3e8ff;
+  --muted-foreground: #7c3aed;
+  --accent: #ec4899;
+  --accent-foreground: #ffffff;
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --border: #e9d5ff;
+  --input: #faf5ff;
+  --ring: #7c3aed;
+  --sidebar: #ffffff;
+  --sidebar-foreground: #2d1b4e;
+  --sidebar-accent: #d946ef;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: #e9d5ff;
+  --sidebar-ring: #7c3aed;
+}
+
+.dark {
+  --primary: #d946ef;
+  --primary-foreground: #faf5ff;
+  --sidebar-primary: #d946ef;
+  --sidebar-primary-foreground: #faf5ff;
+  --background: #1a0f2e;
+  --foreground: #f3e8ff;
+  --card: #2d1b4e;
+  --card-foreground: #f3e8ff;
+  --popover: #2d1b4e;
+  --popover-foreground: #f3e8ff;
+  --secondary: #7c3aed;
+  --secondary-foreground: #faf5ff;
+  --muted: #333333;
+  --muted-foreground: #999999;
+  --accent: #ff6b35;
+  --accent-foreground: #1a1a1a;
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --border: #333333;
+  --input: #1a1a1a;
+  --ring: #00d4d4;
+  --chart-1: #00d4d4;
+  --chart-2: #0077be;
+  --chart-3: #ff6b35;
+  --chart-4: #004e89;
+  --chart-5: #ffffff;
+  --sidebar: #1a1a1a;
+  --sidebar-foreground: #f5f5f5;
+  --sidebar-accent: #00d4d4;
+  --sidebar-accent-foreground: #1a1a1a;
+  --sidebar-border: #333333;
+  --sidebar-ring: #00d4d4;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  [type="button"]:not(:disabled),
+  [type="submit"]:not(:disabled),
+  [type="reset"]:not(:disabled),
+  a[href],
+  select:not(:disabled),
+  input[type="checkbox"]:not(:disabled),
+  input[type="radio"]:not(:disabled) {
+    @apply cursor-pointer;
+  }
+}
+
+@layer components {
+  .container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .flex {
+    min-height: 0;
+    min-width: 0;
+  }
+
+  @media (min-width: 640px) {
+    .container {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container {
+      padding-left: 2rem;
+      padding-right: 2rem;
+      max-width: 1280px;
+    }
+  }
+
+  /* Travel-specific styles with Purple & Magenta Gradients */
+  .hero-gradient {
+    background: linear-gradient(135deg, #7c3aed 0%, #d946ef 50%, #ec4899 100%);
+  }
+
+  .hero-overlay {
+    background: linear-gradient(to bottom, rgba(124, 58, 237, 0.2), rgba(217, 70, 239, 0.4));
+  }
+
+  /* Advanced Gradient Backgrounds */
+  .gradient-section-light {
+    background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 50%, #fce7f3 100%);
+  }
+
+  .gradient-section-medium {
+    background: linear-gradient(135deg, #e9d5ff 0%, #f3e8ff 50%, #fbcfe8 100%);
+  }
+
+  .gradient-section-dark {
+    background: linear-gradient(135deg, #7c3aed 0%, #d946ef 50%, #ec4899 100%);
+  }
+
+  .gradient-text-purple-pink {
+    background: linear-gradient(135deg, #7c3aed 0%, #d946ef 50%, #ec4899 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gradient-border {
+    position: relative;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+    background-image: linear-gradient(135deg, #7c3aed 0%, #d946ef 50%, #ec4899 100%);
+    background-origin: border-box;
+  }
+
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-xl hover:scale-105;
+  }
+
+  .card-gradient {
+    background: linear-gradient(135deg, rgba(250, 245, 255, 0.8) 0%, rgba(243, 232, 255, 0.8) 100%);
+    border: 1px solid rgba(217, 70, 239, 0.3);
+    transition: all 0.3s ease;
+  }
+
+  .card-gradient:hover {
+    background: linear-gradient(135deg, rgba(243, 232, 255, 1) 0%, rgba(252, 231, 243, 1) 100%);
+    border: 1px solid rgba(217, 70, 239, 0.6);
+    box-shadow: 0 20px 40px rgba(217, 70, 239, 0.15);
+  }
+
+  .section-title {
+    @apply text-4xl font-bold text-center mb-12 text-foreground;
+  }
+
+  .section-title-gradient {
+    @apply text-4xl font-bold text-center mb-12;
+    background: linear-gradient(135deg, #7c3aed 0%, #d946ef 50%, #ec4899 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .fade-in {
+    animation: fadeIn 0.6s ease-in;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .slide-in-left {
+    animation: slideInLeft 0.6s ease-out;
+  }
+
+  @keyframes slideInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .slide-in-right {
+    animation: slideInRight 0.6s ease-out;
+  }
+
+  @keyframes slideInRight {
+    from {
+      opacity: 0;
+      transform: translateX(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .bounce-in {
+    animation: bounceIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+
+  @keyframes bounceIn {
+    from {
+      opacity: 0;
+      transform: scale(0.3);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .pulse-glow {
+    animation: pulseGlow 2s ease-in-out infinite;
+  }
+
+  @keyframes pulseGlow {
+    0%, 100% {
+      box-shadow: 0 0 20px rgba(0, 212, 212, 0.5);
+    }
+    50% {
+      box-shadow: 0 0 40px rgba(0, 212, 212, 0.8);
+    }
+  }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--secondary);
+}
