@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en" style="background:#ffffff;">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ECC006 - Homework Assignment #7</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --p900: #2d0058;
+      --p800: #4a0080;
+      --p700: #6200a8;
+      --p600: #7b00c8;
+      --p500: #9c27b0;
+      --p400: #b94dcc;
+      --p300: #d580e8;
+      --p200: #e8b3f5;
+      --p100: #f5e0fd;
+      --text: #1a0033;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: #ffffff !important;
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: #ffffff;
+      border-bottom: 2px solid rgba(123,0,200,.1);
+      padding: 60px 40px 50px;
+      text-align: center;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: linear-gradient(90deg, var(--p600), var(--p400));
+      color: #fff;
+      font-size: .75rem;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      padding: 6px 18px;
+      border-radius: 100px;
+      margin-bottom: 20px;
+      box-shadow: 0 0 24px rgba(180,100,255,.4);
+    }
+
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--p800) 30%, var(--p500) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 1rem;
+      color: var(--p700);
+      font-weight: 300;
+    }
+
+    /* ── MAIN ── */
+    main {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 50px 24px 60px;
+    }
+
+    /* ── SECTION TITLE ── */
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--p700);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .section-title::before {
+      content: '';
+      display: inline-block;
+      width: 5px; height: 26px;
+      background: linear-gradient(to bottom, var(--p400), var(--p600));
+      border-radius: 4px;
+    }
+
+    /* ── CARD ── */
+    .card {
+      background: #ffffff;
+      border: 1px solid rgba(155,40,180,.15);
+      border-radius: 20px;
+      padding: 32px;
+      box-shadow: 0 4px 24px rgba(100,0,160,.07);
+      margin-bottom: 36px;
+    }
+
+    /* ── QUESTION ── */
+    .question {
+      font-weight: 600;
+      font-size: 1rem;
+      color: var(--p800);
+      margin-bottom: 14px;
+    }
+
+    .options {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .options li {
+      font-size: .95rem;
+      color: #444;
+      padding: 8px 16px;
+      border-radius: 10px;
+      border: 1px solid transparent;
+    }
+
+    .options li.correct {
+      background: linear-gradient(135deg, rgba(155,40,180,.08), rgba(100,0,160,.05));
+      border: 1.5px solid var(--p400);
+      color: var(--p700);
+      font-weight: 600;
+    }
+
+    .correct-badge {
+      display: inline-block;
+      background: linear-gradient(90deg, var(--p600), var(--p400));
+      color: #fff;
+      font-size: .7rem;
+      font-weight: 700;
+      padding: 2px 10px;
+      border-radius: 100px;
+      margin-left: 8px;
+      vertical-align: middle;
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(100,0,160,.15), transparent);
+      margin: 40px 0;
+    }
+
+    /* ── CODE BLOCK ── */
+    .code-block {
+      background: #f8f0ff;
+      border: 1px solid rgba(123,0,200,.15);
+      border-left: 4px solid var(--p500);
+      border-radius: 12px;
+      padding: 20px 24px;
+      font-family: 'Courier New', monospace;
+      font-size: .85rem;
+      color: var(--p900);
+      line-height: 1.8;
+      overflow-x: auto;
+      margin: 16px 0;
+      white-space: pre;
+    }
+
+    .highlight { color: var(--p600); font-weight: 700; }
+
+    /* ── INSIGHT BOX ── */
+    .insight-box {
+      background: linear-gradient(135deg, rgba(155,40,180,.08), rgba(100,0,160,.05));
+      border: 1px solid rgba(180,100,255,.25);
+      border-left: 4px solid var(--p400);
+      border-radius: 14px;
+      padding: 18px 22px;
+      font-size: .93rem;
+      line-height: 1.7;
+      color: var(--p800);
+      margin-top: 16px;
+    }
+    .insight-box strong { color: var(--p600); }
+
+    /* ── TRILLIUM DEMO ── */
+    .demo-wrapper {
+      border: 1.5px solid rgba(123,0,200,.15);
+      border-radius: 14px;
+      overflow: hidden;
+      margin: 20px 0;
+    }
+
+    .demo-inner {
+      background-color: #d5edb3;
+      color: #000066;
+      font-family: Verdana, Arial, sans-serif;
+      font-size: .85rem;
+      min-height: 200px;
+      position: relative;
+    }
+
+    .demo-header {
+      background-color: #cccccc;
+      color: #663333;
+      font-size: x-large;
+      font-weight: bold;
+      border-bottom: 1px solid #333333;
+      padding: 14px 20px;
+    }
+
+    .demo-nav {
+      float: right;
+      width: 150px;
+      background-color: #cccccc;
+      border: 1px solid #000000;
+      padding: 10px;
+    }
+
+    .demo-nav ul { list-style-type: none; padding: 0; }
+    .demo-nav ul li { padding: 4px 0; }
+    .demo-nav ul li a { color: #000066; text-decoration: none; }
+    .demo-nav ul li a:hover { text-decoration: underline; }
+
+    .demo-main {
+      margin-right: 160px;
+      padding: 16px;
+      background-color: #ffffff;
+      color: #000000;
+      overflow: hidden;
+    }
+
+    .demo-footer {
+      font-size: x-small;
+      text-align: center;
+      clear: both;
+      padding: 10px;
+      background: #d5edb3;
+    }
+
+    /* ── SUMMARY SECTION ── */
+    .summary-text {
+      font-size: .95rem;
+      color: #444;
+      line-height: 1.9;
+    }
+
+    .summary-text p { margin-bottom: 16px; }
+    .summary-text h3 {
+      font-family: 'Playfair Display', serif;
+      color: var(--p700);
+      font-size: 1.1rem;
+      margin: 20px 0 8px;
+    }
+  </style>
+</head>
+<body style="background:#ffffff !important;">
+
+<!-- ══ HEADER ══ -->
+<header>
+  <div class="hero-badge">📝 ECC006 — Assignment #7</div>
+  <h1>Homework Assignment #7</h1>
+  <p>HTML5, CSS, Mobile Web Design & Accessibility</p>
+</header>
+
+<!-- ══ MAIN ══ -->
+<main>
+
+  <!-- Q1 -->
+  <div class="section-title">Multiple Choice Questions</div>
+  <div class="card">
+
+    <p class="question">1. How would you link to the named fragment #jobs on the page employ.html from the home page of the site?</p>
+    <ul class="options">
+      <li class="correct">a. &lt;a href="employ.html#jobs"&gt;Jobs&lt;/a&gt; <span class="correct-badge">✓ Correct</span></li>
+      <li>b. &lt;a name="employ.html#jobs"&gt;Jobs&lt;/a&gt;</li>
+      <li>c. &lt;a link="employ.html#jobs"&gt;Jobs&lt;/a&gt;</li>
+      <li>d. &lt;a href="#jobs"&gt;Jobs&lt;/a&gt;</li>
+    </ul>
+
+    <div class="divider"></div>
+
+    <p class="question">2. Which pseudo-element can be used to generate content that precedes an element?</p>
+    <ul class="options">
+      <li>a. :after</li>
+      <li class="correct">b. :before <span class="correct-badge">✓ Correct</span></li>
+      <li>c. :content</li>
+      <li>d. :first-line</li>
+    </ul>
+
+    <div class="divider"></div>
+
+    <p class="question">3. Which of the following is a mobile web design best practice?</p>
+    <ul class="options">
+      <li>a. Configure a multiple-column page layout.</li>
+      <li>b. Avoid using lists to organize information.</li>
+      <li class="correct">c. Configure a single-column page layout. <span class="correct-badge">✓ Correct</span></li>
+      <li>d. Embed text in images wherever possible.</li>
+    </ul>
+
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Q4 - Find the Error -->
+  <div class="section-title">4. Find the Error</div>
+  <div class="card">
+    <p class="question">The page below is intended for the navigation area to display on the <strong>right side</strong> of the browser window. What needs to be changed?</p>
+
+    <div class="insight-box">
+      <strong>🔍 Error Found:</strong> The <code>nav</code> is set to <code>float: left</code> — this places navigation on the <strong>left</strong>. To move it to the right, change it to <strong>float: right</strong>. Also, <code>main</code> should use <code>margin-right</code> instead of <code>padding-right</code> to avoid overlap.
+    </div>
+
+    <p style="margin:20px 0 8px; font-weight:600; color:var(--p700);">❌ Original (wrong):</p>
+    <div class="code-block">nav { <span class="highlight">float: left;</span>   /* ← Should be float: right */
+      width: 120px; }
+
+main { padding: 20px 150px 20px 20px;
+       background-color: #ffffff; }</div>
+
+    <p style="margin:20px 0 8px; font-weight:600; color:var(--p700);">✅ Corrected:</p>
+    <div class="code-block">nav { <span class="highlight">float: right;</span>  /* ← Fixed */
+      width: 150px;
+      background-color: #cccccc;
+      border: 1px solid #000000; }
+
+main { <span class="highlight">margin-right: 160px;</span>  /* ← avoid overlap */
+       background-color: #ffffff; }</div>
+
+    <p style="margin:20px 0 8px; font-weight:600; color:var(--p700);">🖥️ Result Preview:</p>
+    <div class="demo-wrapper">
+      <div class="demo-inner">
+        <div class="demo-header">Trillium Media Design</div>
+        <nav class="demo-nav">
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Products</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">About</a></li>
+          </ul>
+        </nav>
+        <div class="demo-main">
+          <p>Our professional staff takes pride in its working relationship with our clients by offering personalized services that listen to their needs, develop their target areas, and incorporate these items into a website that works.</p>
+        </div>
+        <div class="demo-footer">
+          Copyright &copy; 2016 Trillium Media Design<br>
+          Last Updated on 06/03/16
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Web Research Summary -->
+  <div class="section-title">5. Web Research Summary</div>
+  <div class="card">
+    <p style="font-size:.82rem; color:var(--p400); margin-bottom:18px; font-weight:600; text-transform:uppercase; letter-spacing:.08em;">Accessibility & Mobile Web — Areas of Overlap</p>
+    <div class="summary-text">
+
+      <h3>Introduction</h3>
+      <p>The W3C document "Web Content Accessibility and Mobile Web" (w3.org/WAI/mobile) reveals a striking overlap between mobile web best practices and accessibility guidelines. Many design decisions that help users with disabilities also improve the experience for mobile users.</p>
+
+      <h3>Key Areas of Overlap</h3>
+      <p><strong>1. Alternate Text for Images:</strong> Providing <code>alt</code> attributes benefits screen reader users and also helps mobile users who have images disabled to save data bandwidth. In both cases, content remains meaningful without visual images.</p>
+
+      <p><strong>2. Use of Headings:</strong> Proper heading structure (<code>h1</code>–<code>h6</code>) helps screen readers navigate content logically. On mobile, clear headings also improve readability on small screens and help users scan content quickly.</p>
+
+      <p><strong>3. Single-Column Layouts:</strong> A single-column layout is a mobile best practice for smaller screens. It also benefits users with low vision or cognitive disabilities who struggle with complex multi-column designs.</p>
+
+      <p><strong>4. Keyboard & Touch Navigation:</strong> Accessibility requires that all functionality be available via keyboard. On mobile, this translates directly to touch-friendly navigation — large tap targets and logical focus order benefit both groups.</p>
+
+      <p><strong>5. Avoiding Text in Images:</strong> Embedding text in images prevents screen readers from reading it and also causes blurry, unscalable text on high-DPI mobile screens. Using real HTML text solves both issues.</p>
+
+      <h3>Conclusion</h3>
+      <p>Web developers can support both accessibility and mobile devices by following a "one standard fits all" approach: semantic HTML5 elements, responsive CSS, descriptive alt text, and touch-friendly controls. The overlap between these guidelines shows that accessible design is inherently good mobile design — both aim to make content reachable by the widest possible audience.</p>
+    </div>
+  </div>
+
+</main>
+
+</body>
+</html>
