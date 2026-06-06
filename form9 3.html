@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en" style="background:#ffffff;">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Music Survey</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --p900: #2d0058;
+      --p800: #4a0080;
+      --p700: #6200a8;
+      --p600: #7b00c8;
+      --p500: #9c27b0;
+      --p400: #b94dcc;
+      --p300: #d580e8;
+      --p200: #e8b3f5;
+      --p100: #f5e0fd;
+      --text: #1a0033;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: #ffffff !important;
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: #ffffff;
+      border-bottom: 2px solid rgba(123,0,200,.1);
+      padding: 60px 40px 50px;
+      text-align: center;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: linear-gradient(90deg, var(--p600), var(--p400));
+      color: #fff;
+      font-size: .75rem;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      padding: 6px 18px;
+      border-radius: 100px;
+      margin-bottom: 20px;
+      box-shadow: 0 0 24px rgba(180,100,255,.4);
+    }
+
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--p800) 30%, var(--p500) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 1rem;
+      color: var(--p700);
+      font-weight: 300;
+    }
+
+    /* ── MAIN ── */
+    main {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 50px 24px 60px;
+    }
+
+    /* ── FORM CARD ── */
+    .form-card {
+      background: #ffffff;
+      border: 1px solid rgba(155,40,180,.15);
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: 0 4px 24px rgba(100,0,160,.07);
+    }
+
+    /* ── FIELD ROW ── */
+    .field-row {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 24px;
+    }
+
+    .field-row label {
+      width: 90px;
+      font-weight: 600;
+      font-size: .95rem;
+      color: var(--p800);
+      flex-shrink: 0;
+    }
+
+    .field-row input[type="text"],
+    .field-row input[type="email"] {
+      flex: 1;
+      padding: 10px 16px;
+      border: 1.5px solid rgba(123,0,200,.2);
+      border-radius: 10px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: .95rem;
+      color: var(--text);
+      outline: none;
+      transition: border .2s, box-shadow .2s;
+    }
+
+    .field-row input:focus {
+      border-color: var(--p500);
+      box-shadow: 0 0 0 3px rgba(155,40,180,.1);
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(100,0,160,.15), transparent);
+      margin: 28px 0;
+    }
+
+    /* ── FIELDSET ── */
+    fieldset {
+      border: 1.5px solid var(--p400);
+      border-radius: 14px;
+      padding: 20px 24px;
+      margin-bottom: 28px;
+    }
+
+    legend {
+      background: linear-gradient(90deg, var(--p700), var(--p500));
+      color: #fff;
+      font-size: .82rem;
+      font-weight: 600;
+      letter-spacing: .06em;
+      padding: 6px 16px;
+      border-radius: 100px;
+      margin-left: 8px;
+    }
+
+    /* ── RADIO & CHECKBOX ── */
+    .option-list {
+      list-style: none;
+      margin-top: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .option-list li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: .95rem;
+      color: var(--p900);
+      cursor: pointer;
+    }
+
+    .option-list input[type="radio"],
+    .option-list input[type="checkbox"] {
+      accent-color: var(--p600);
+      width: 17px;
+      height: 17px;
+      cursor: pointer;
+    }
+
+    /* ── SELECT ROW ── */
+    .select-row {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 28px;
+      flex-wrap: wrap;
+    }
+
+    .select-row label {
+      font-weight: 600;
+      font-size: .95rem;
+      color: var(--p800);
+    }
+
+    select {
+      padding: 10px 16px;
+      border: 1.5px solid rgba(123,0,200,.2);
+      border-radius: 10px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: .9rem;
+      color: var(--text);
+      background: #fff;
+      outline: none;
+      cursor: pointer;
+      transition: border .2s;
+      min-width: 180px;
+    }
+
+    select:focus {
+      border-color: var(--p500);
+      box-shadow: 0 0 0 3px rgba(155,40,180,.1);
+    }
+
+    /* ── TEXTAREA ── */
+    .textarea-label {
+      font-weight: 600;
+      font-size: .95rem;
+      color: var(--p800);
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    textarea {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1.5px solid rgba(123,0,200,.2);
+      border-radius: 12px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: .92rem;
+      color: var(--text);
+      resize: vertical;
+      outline: none;
+      transition: border .2s;
+      margin-bottom: 28px;
+    }
+
+    textarea:focus {
+      border-color: var(--p500);
+      box-shadow: 0 0 0 3px rgba(155,40,180,.1);
+    }
+
+    /* ── BUTTONS ── */
+    .btn-row {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      margin-top: 10px;
+    }
+
+    .btn-submit {
+      background: linear-gradient(90deg, var(--p700), var(--p500));
+      color: #fff;
+      border: none;
+      padding: 12px 36px;
+      border-radius: 100px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: opacity .2s, transform .2s;
+      box-shadow: 0 4px 16px rgba(100,0,160,.25);
+    }
+    .btn-submit:hover { opacity: .9; transform: translateY(-2px); }
+
+    .btn-reset {
+      background: rgba(100,0,160,.08);
+      color: var(--p700);
+      border: 1.5px solid rgba(100,0,160,.2);
+      padding: 12px 36px;
+      border-radius: 100px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background .2s;
+    }
+    .btn-reset:hover { background: rgba(100,0,160,.14); }
+
+    .required-note {
+      text-align: center;
+      font-size: .8rem;
+      color: var(--p400);
+      margin-top: 16px;
+    }
+  </style>
+</head>
+<body style="background:#ffffff !important;">
+
+<!-- ══ HEADER ══ -->
+<header>
+  <div class="hero-badge">🎵 ECC006 — Assignment #9</div>
+  <h1>Music Survey</h1>
+  <p>Help us understand your music preferences and listening habits.</p>
+</header>
+
+<!-- ══ MAIN ══ -->
+<main>
+  <div class="form-card">
+    <form action="http://www.uyar.com/teaching/ecc006/2017spring/login.php" method="post">
+
+      <!-- Name -->
+      <div class="field-row">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" placeholder="Enter your name" required />
+      </div>
+
+      <!-- Email -->
+      <div class="field-row">
+        <label for="email">E-Mail:</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required />
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- Radio: Favorite Types of Music -->
+      <fieldset>
+        <legend>Select Your Favorite Types of Music:</legend>
+        <ul class="option-list">
+          <li><input type="radio" name="music_type" value="pop" id="pop"><label for="pop">Pop</label></li>
+          <li><input type="radio" name="music_type" value="classical" id="classical"><label for="classical">Classical</label></li>
+          <li><input type="radio" name="music_type" value="rock" id="rock"><label for="rock">Rock</label></li>
+          <li><input type="radio" name="music_type" value="folk" id="folk"><label for="folk">Folk</label></li>
+          <li><input type="radio" name="music_type" value="rap" id="rap"><label for="rap">Rap</label></li>
+          <li><input type="radio" name="music_type" value="other" id="other"><label for="other">Other</label></li>
+        </ul>
+      </fieldset>
+
+      <!-- Select: How often purchase CDs -->
+      <div class="select-row">
+        <label for="frequency">How often you purchase Music CDs:</label>
+        <select id="frequency" name="frequency" size="3">
+          <option value="weekly">Weekly</option>
+          <option value="few_year">A few CDs each year</option>
+          <option value="monthly">Monthly</option>
+          <option value="never">Never purchase</option>
+        </select>
+      </div>
+
+      <!-- Checkbox: Locations -->
+      <fieldset>
+        <legend>Select the locations you listen to Music:</legend>
+        <ul class="option-list">
+          <li><input type="checkbox" name="location" value="home" id="home"><label for="home">At home</label></li>
+          <li><input type="checkbox" name="location" value="car" id="car"><label for="car">In the car</label></li>
+          <li><input type="checkbox" name="location" value="mp3" id="mp3"><label for="mp3">Anywhere (MP3 Player)</label></li>
+        </ul>
+      </fieldset>
+
+      <!-- Textarea -->
+      <label class="textarea-label" for="role">What role does music play in your life?</label>
+      <textarea id="role" name="role" cols="60" rows="3" placeholder="Share your thoughts about music..."></textarea>
+
+      <!-- Buttons -->
+      <div class="btn-row">
+        <button type="submit" class="btn-submit">Submit Survey</button>
+        <button type="reset" class="btn-reset">Reset Form</button>
+      </div>
+
+      <p class="required-note">* All fields are required except the text area.</p>
+
+    </form>
+  </div>
+</main>
+
+
+</body>
+</html>
