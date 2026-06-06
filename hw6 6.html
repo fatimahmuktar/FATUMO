@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en" style="background:#ffffff;">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ECC006 - Homework Assignment #6</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --p900: #2d0058;
+      --p800: #4a0080;
+      --p700: #6200a8;
+      --p600: #7b00c8;
+      --p500: #9c27b0;
+      --p400: #b94dcc;
+      --p300: #d580e8;
+      --p200: #e8b3f5;
+      --p100: #f5e0fd;
+      --text: #1a0033;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: #ffffff !important;
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: #ffffff;
+      border-bottom: 2px solid rgba(123,0,200,.1);
+      padding: 60px 40px 50px;
+      text-align: center;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: linear-gradient(90deg, var(--p600), var(--p400));
+      color: #fff;
+      font-size: .75rem;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      padding: 6px 18px;
+      border-radius: 100px;
+      margin-bottom: 20px;
+      box-shadow: 0 0 24px rgba(180,100,255,.4);
+    }
+
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--p800) 30%, var(--p500) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 1rem;
+      color: var(--p700);
+      font-weight: 300;
+    }
+
+    /* ── MAIN ── */
+    main {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 50px 24px 60px;
+    }
+
+    /* ── SECTION TITLE ── */
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--p700);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .section-title::before {
+      content: '';
+      display: inline-block;
+      width: 5px; height: 26px;
+      background: linear-gradient(to bottom, var(--p400), var(--p600));
+      border-radius: 4px;
+    }
+
+    /* ── CARD ── */
+    .card {
+      background: #ffffff;
+      border: 1px solid rgba(155,40,180,.15);
+      border-radius: 20px;
+      padding: 32px;
+      box-shadow: 0 4px 24px rgba(100,0,160,.07);
+      margin-bottom: 36px;
+    }
+
+    /* ── QUESTION ── */
+    .question {
+      font-weight: 600;
+      font-size: 1rem;
+      color: var(--p800);
+      margin-bottom: 14px;
+    }
+
+    .options {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .options li {
+      font-size: .95rem;
+      color: #444;
+      padding: 8px 16px;
+      border-radius: 10px;
+      border: 1px solid transparent;
+    }
+
+    .options li.correct {
+      background: linear-gradient(135deg, rgba(155,40,180,.08), rgba(100,0,160,.05));
+      border: 1.5px solid var(--p400);
+      color: var(--p700);
+      font-weight: 600;
+    }
+
+    .correct-badge {
+      display: inline-block;
+      background: linear-gradient(90deg, var(--p600), var(--p400));
+      color: #fff;
+      font-size: .7rem;
+      font-weight: 700;
+      padding: 2px 10px;
+      border-radius: 100px;
+      margin-left: 8px;
+      vertical-align: middle;
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(100,0,160,.15), transparent);
+      margin: 28px 0;
+    }
+
+    /* ── CODE BLOCK ── */
+    .code-block {
+      background: #f8f0ff;
+      border: 1px solid rgba(123,0,200,.15);
+      border-left: 4px solid var(--p500);
+      border-radius: 12px;
+      padding: 20px 24px;
+      font-family: 'Courier New', monospace;
+      font-size: .85rem;
+      color: var(--p900);
+      line-height: 1.9;
+      overflow-x: auto;
+      margin: 16px 0;
+      white-space: pre;
+    }
+
+    .highlight { color: var(--p600); font-weight: 700; }
+    .comment   { color: #888; font-style: italic; }
+
+    /* ── INSIGHT BOX ── */
+    .insight-box {
+      background: linear-gradient(135deg, rgba(155,40,180,.08), rgba(100,0,160,.05));
+      border: 1px solid rgba(180,100,255,.25);
+      border-left: 4px solid var(--p400);
+      border-radius: 14px;
+      padding: 18px 22px;
+      font-size: .93rem;
+      line-height: 1.7;
+      color: var(--p800);
+      margin-top: 16px;
+    }
+    .insight-box strong { color: var(--p600); }
+
+    /* ── TRILLIUM DEMO ── */
+    .demo-wrapper {
+      border: 1.5px solid rgba(123,0,200,.15);
+      border-radius: 14px;
+      overflow: hidden;
+      margin: 20px 0;
+    }
+
+    .demo-inner {
+      background-color: #ffffff;
+      color: #000066;
+      font-family: Verdana, Arial, sans-serif;
+      font-size: .85rem;
+      min-height: 180px;
+      overflow: hidden;
+    }
+
+    .demo-site-header {
+      background-color: #cccccc;
+      color: #663333;
+      font-size: 1.3rem;
+      font-weight: bold;
+      border-bottom: 1px solid #333333;
+      padding: 12px 16px;
+    }
+
+    .demo-nav {
+      float: right;
+      width: 150px;
+      background-color: #cccccc;
+      border: 1px solid #000000;
+      padding: 10px;
+    }
+
+    .demo-nav ul { list-style-type: none; padding: 0; }
+    .demo-nav ul li { padding: 4px 0; }
+    .demo-nav ul li a { color: #000066; text-decoration: none; }
+
+    .demo-main-content {
+      margin-right: 160px;
+      padding: 14px;
+      color: #000000;
+    }
+
+    .demo-footer-bar {
+      font-size: .75rem;
+      text-align: center;
+      clear: both;
+      padding: 8px;
+      background: #f0f0f0;
+      border-top: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body style="background:#ffffff !important;">
+
+<!-- ══ HEADER ══ -->
+<header>
+  <div class="hero-badge">📝 ECC006 — Assignment #6</div>
+  <h1>Homework Assignment #6</h1>
+  <p>CSS Box Model, Display Properties & HTML5 Elements</p>
+</header>
+
+<!-- ══ MAIN ══ -->
+<main>
+
+  <!-- MCQ CARD -->
+  <div class="section-title">Multiple Choice Questions</div>
+  <div class="card">
+
+    <!-- Q1 -->
+    <p class="question">1. Which of the following, from outermost to innermost, are components of the box model?</p>
+    <ul class="options">
+      <li class="correct">a. margin, border, padding, content <span class="correct-badge">✓ Correct</span></li>
+      <li>b. content, padding, border, margin</li>
+      <li>c. content, margin, padding, border</li>
+      <li>d. margin, padding, border, content</li>
+    </ul>
+
+    <div class="divider"></div>
+
+    <!-- Q2 -->
+    <p class="question">2. Which of the following causes an element to display as a block of content with white space above and below?</p>
+    <ul class="options">
+      <li>a. display: none;</li>
+      <li>b. block: display;</li>
+      <li class="correct">c. display: block; <span class="correct-badge">✓ Correct</span></li>
+      <li>d. display: inline;</li>
+    </ul>
+
+    <div class="divider"></div>
+
+    <!-- Q3 -->
+    <p class="question">3. Which of the following pseudo-classes is the default state for a hyperlink that has been clicked?</p>
+    <ul class="options">
+      <li>a. :hover</li>
+      <li>b. :link</li>
+      <li>c. :onclick</li>
+      <li class="correct">d. :visited <span class="correct-badge">✓ Correct</span></li>
+    </ul>
+
+    <div class="divider"></div>
+
+    <!-- Q4 -->
+    <p class="question">4. Which HTML5 element has the purpose of providing tangential content?</p>
+    <ul class="options">
+      <li>a. article</li>
+      <li class="correct">b. aside <span class="correct-badge">✓ Correct</span></li>
+      <li>c. sidebar</li>
+      <li>d. section</li>
+    </ul>
+
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Q5 - Fill the Missing Code -->
+  <div class="section-title">5. Fill in the Missing Code</div>
+  <div class="card">
+
+    <p class="question">This web page should be configured as a two-column layout with a right navigation column that is 150px wide with a 1px border.</p>
+
+    <div class="insight-box">
+      <strong>💡 Solution:</strong> The <code>nav</code> needs <code>float: right</code> to move to the right side. The <code>main</code> needs <code>margin-right: 160px</code> to avoid overlapping with the nav. The <code>footer</code> needs <code>clear: both</code> to sit below both columns.
+    </div>
+
+    <p style="margin:20px 0 8px; font-weight:600; color:var(--p700);">✅ Completed Code:</p>
+    <div class="code-block"><span class="comment">/* nav — float right, 150px wide, border */</span>
+nav { <span class="highlight">float: right</span>;
+      width: <span class="highlight">150px</span>;
+      background-color: #cccccc;
+      border: <span class="highlight">1px solid #000000</span>; }
+
+<span class="comment">/* header styles */</span>
+header { background-color: #cccccc;
+         color: #663333;
+         font-size: x-large;
+         border-bottom: 1px solid #333333; }
+
+<span class="comment">/* main — margin-right to leave space for nav */</span>
+main { margin-right: <span class="highlight">160px</span>; }
+
+<span class="comment">/* footer — clear both columns */</span>
+footer { font-size: x-small;
+         text-align: center;
+         clear: <span class="highlight">both</span>; }
+
+<span class="comment">/* nav links */</span>
+<span class="highlight">nav</span> a { color: #000066;
+        text-decoration: none; }
+
+<span class="comment">/* remove bullet points */</span>
+ul { list-style-type: <span class="highlight">none</span>; }</div>
+
+    <p style="margin:20px 0 8px; font-weight:600; color:var(--p700);">🖥️ Result Preview:</p>
+    <div class="demo-wrapper">
+      <div class="demo-inner">
+        <nav class="demo-nav">
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Products</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">About</a></li>
+          </ul>
+        </nav>
+        <div class="demo-main-content">
+          <div class="demo-site-header">Trillium Media Design</div>
+          <p style="margin-top:12px;">Our professional staff takes pride in its working relationship with our clients by offering personalized services that listen to their needs, develop their target areas, and incorporate these items into a website that works.</p>
+        </div>
+        <div class="demo-footer-bar">
+          Copyright &copy; 2016 Trillium Media Design<br>Last Updated on 06/03/16
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</main>
+
+</body>
+</html>
