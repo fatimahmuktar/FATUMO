@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en" style="background:#ffffff;">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>E-Commerce Consumer Behavior Survey 2026</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --p900: #2d0058;
+      --p800: #4a0080;
+      --p700: #6200a8;
+      --p600: #7b00c8;
+      --p500: #9c27b0;
+      --p400: #b94dcc;
+      --p300: #d580e8;
+      --p200: #e8b3f5;
+      --p100: #f5e0fd;
+      --p50:  #fdf0ff;
+      --gold: #c9a84c;
+      --white: #ffffff;
+      --text: #1a0033;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: #ffffff !important;
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* no overlay */
+
+    /* ── HERO ── */
+    header {
+      position: relative;
+      padding: 80px 40px 60px;
+      text-align: center;
+      background: #ffffff;
+      border-bottom: 2px solid rgba(123,0,200,.1);
+      overflow: hidden;
+    }
+
+    header::after { display: none; }
+
+    .hero-blob { display: none; }
+
+    .hero-badge {
+      display: inline-block;
+      background: linear-gradient(90deg, var(--p600), var(--p400));
+      color: #fff;
+      font-size: .75rem;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      padding: 6px 18px;
+      border-radius: 100px;
+      margin-bottom: 24px;
+      box-shadow: 0 0 24px rgba(180,100,255,.5);
+    }
+
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3.6rem);
+      font-weight: 900;
+      line-height: 1.1;
+      background: linear-gradient(135deg, var(--p800) 30%, var(--p500) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 20px;
+    }
+
+    header p {
+      font-size: 1.05rem;
+      color: var(--p700);
+      margin: 0 auto 32px;
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    .stat-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+    }
+
+    .pill {
+      background: rgba(100,0,160,.08);
+      border: 1px solid rgba(100,0,160,.2);
+      backdrop-filter: blur(12px);
+      border-radius: 100px;
+      padding: 10px 22px;
+      font-size: .9rem;
+      font-weight: 500;
+      color: var(--p800);
+      transition: background .2s;
+    }
+    .pill:hover { background: rgba(100,0,160,.14); }
+    .pill span { color: var(--p600); font-weight: 700; }
+
+    /* ── LAYOUT ── */
+    main { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; padding: 60px 24px 80px; }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: var(--p700);
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .section-title::before {
+      content: '';
+      display: inline-block;
+      width: 5px; height: 28px;
+      background: linear-gradient(to bottom, var(--p400), var(--p600));
+      border-radius: 4px;
+    }
+
+    /* ── CARD ── */
+    .card {
+      background: #ffffff;
+      border: 1px solid rgba(155,40,180,.15);
+      border-radius: 20px;
+      padding: 32px;
+      box-shadow: 0 4px 24px rgba(100,0,160,.07);
+      margin-bottom: 40px;
+    }
+
+    /* ── KEY INSIGHT ── */
+    .insight-box {
+      background: linear-gradient(135deg, rgba(155,40,180,.08), rgba(100,0,160,.05));
+      border: 1px solid rgba(180,100,255,.25);
+      border-left: 4px solid var(--p400);
+      border-radius: 14px;
+      padding: 20px 24px;
+      margin-bottom: 40px;
+      font-size: .97rem;
+      line-height: 1.7;
+      color: var(--p800);
+    }
+    .insight-box strong { color: var(--p600); }
+
+    /* ── TABLE ── */
+    .styled-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .92rem;
+    }
+    .styled-table thead tr {
+      background: linear-gradient(90deg, var(--p700), var(--p600));
+    }
+    .styled-table th {
+      padding: 14px 20px;
+      text-align: left;
+      font-weight: 600;
+      font-size: .8rem;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      color: var(--p100);
+    }
+    .styled-table th:first-child { border-radius: 10px 0 0 0; }
+    .styled-table th:last-child  { border-radius: 0 10px 0 0; }
+
+    .styled-table td {
+      padding: 13px 20px;
+      border-bottom: 1px solid rgba(100,0,160,.08);
+      color: var(--p900);
+    }
+    .styled-table tbody tr:hover { background: rgba(155,40,180,.04); }
+    .styled-table tbody tr:last-child td { border-bottom: none; }
+
+    .badge {
+      display: inline-block;
+      background: linear-gradient(90deg, var(--p700), var(--p500));
+      color: #fff;
+      font-size: .78rem;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 100px;
+    }
+
+    /* ── BAR CHART ── */
+    .bar-wrap { margin-top: 16px; }
+    .bar-row { display: flex; align-items: center; margin-bottom: 14px; gap: 14px; }
+    .bar-label { width: 130px; font-size: .85rem; color: var(--p700); flex-shrink: 0; text-align: right; }
+    .bar-track { flex: 1; background: rgba(100,0,160,.1); border-radius: 100px; height: 14px; overflow: hidden; }
+    .bar-fill {
+      height: 100%;
+      border-radius: 100px;
+      background: linear-gradient(90deg, var(--p600), var(--p300));
+      animation: growBar .9s ease forwards;
+      transform-origin: left;
+    }
+    @keyframes growBar { from { width: 0 !important; } }
+    .bar-pct { font-size: .82rem; font-weight: 600; color: var(--p600); width: 46px; flex-shrink: 0; }
+
+    /* ── PIE (CSS only) ── */
+    .pie-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-top: 16px; }
+    .pie-card {
+      background: #ffffff;
+      border: 1px solid rgba(155,40,180,.15);
+      border-radius: 16px;
+      padding: 24px;
+      text-align: center;
+      transition: transform .2s;
+      box-shadow: 0 2px 16px rgba(100,0,160,.07);
+    }
+    .pie-card:hover { transform: translateY(-4px); }
+    .pie-donut {
+      width: 100px; height: 100px;
+      border-radius: 50%;
+      margin: 0 auto 16px;
+      position: relative;
+    }
+    .pie-value { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 900; color: var(--p800); }
+    .pie-label { font-size: .82rem; color: var(--p500); margin-top: 4px; }
+
+    /* ── MARKET CARDS ── */
+    .market-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+    .market-card {
+      background: #ffffff;
+      border: 1px solid rgba(155,40,180,.15);
+      border-radius: 18px;
+      padding: 28px 24px;
+      position: relative;
+      overflow: hidden;
+      transition: transform .2s, box-shadow .2s;
+      box-shadow: 0 2px 16px rgba(100,0,160,.07);
+    }
+    .market-card:hover { transform: translateY(-5px); box-shadow: 0 16px 40px rgba(100,0,160,.12); }
+    .market-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--p500), var(--p300));
+    }
+    .market-card h3 { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--p700); margin-bottom: 12px; }
+    .market-card p { font-size: .88rem; color: #555; line-height: 1.7; }
+    .market-card .stat-big { font-size: 1.9rem; font-weight: 700; color: var(--p600); font-family: 'Playfair Display', serif; }
+
+    /* ── CONCLUSION ── */
+    .conclusion-list { list-style: none; padding: 0; }
+    .conclusion-list li {
+      display: flex;
+      gap: 16px;
+      padding: 18px 0;
+      border-bottom: 1px solid rgba(100,0,160,.08);
+    }
+    .conclusion-list li:last-child { border-bottom: none; }
+    .c-num {
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--p600), var(--p400));
+      display: flex; align-items: center; justify-content: center;
+      font-size: .8rem; font-weight: 700; color: #fff;
+      flex-shrink: 0; margin-top: 2px;
+    }
+    .c-text strong { color: var(--p700); }
+    .c-text { font-size: .9rem; color: #444; line-height: 1.7; }
+
+    /* ── DIVIDER ── */
+    .divider { height: 1px; background: linear-gradient(90deg, transparent, rgba(100,0,160,.15), transparent); margin: 50px 0; }
+
+    /* ── FAVORITE SITES ── */
+    .sites-list { display: flex; flex-direction: column; gap: 12px; }
+    .site-row { display: flex; align-items: center; gap: 16px; }
+    .site-name { width: 90px; font-size: .88rem; color: var(--p700); flex-shrink: 0; }
+    .site-bar-track { flex: 1; background: rgba(100,0,160,.1); border-radius: 100px; height: 16px; overflow: hidden; }
+    .site-bar-fill {
+      height: 100%; border-radius: 100px;
+      animation: growBar .9s ease forwards;
+    }
+    .fill-amazon  { background: linear-gradient(90deg, #7b00c8, #d580e8); }
+    .fill-noon    { background: linear-gradient(90deg, #9c27b0, #e8b3f5); }
+    .fill-shein   { background: linear-gradient(90deg, #b94dcc, #f5e0fd); }
+    .fill-walmart { background: linear-gradient(90deg, #6200a8, #b94dcc); }
+    .site-count { font-size: .82rem; font-weight: 600; color: var(--p600); width: 60px; flex-shrink: 0; }
+  </style>
+</head>
+<body style="background:#ffffff !important;">
+
+<!-- ══ HERO ══ -->
+<header>
+  <div class="hero-blob blob1"></div>
+  <div class="hero-blob blob2"></div>
+  <div class="hero-badge">📊 ECC006 — Assignment #10</div>
+  <h1>E-Commerce Consumer<br>Behavior Survey (2026)</h1>
+  <p>A study of 20 individuals analyzing online purchasing habits, demographics, and platform preferences.</p>
+  <div class="stat-pills">
+    <div class="pill">👥 <span>N = 20</span> Respondents</div>
+    <div class="pill">🛒 <span>100%</span> Purchased Online</div>
+    <div class="pill">🏆 Amazon <span>70%</span> Favorite</div>
+    <div class="pill">📱 Monthly shoppers <span>50%</span></div>
+  </div>
+</header>
+
+<!-- ══ MAIN ══ -->
+<main>
+
+  <!-- KEY INSIGHT -->
+  <div class="insight-box">
+    <strong>🔍 Key Insight:</strong> 100% of respondents have purchased online — confirming that e-commerce is now a universal behavior in this sample. Monthly shopping dominates (50%), with <strong>Amazon</strong> as the overwhelming platform of choice (70%). These results align closely with 2025–2026 global market research trends.
+  </div>
+
+  <!-- PRIMARY FINDINGS -->
+  <div class="section-title">Primary Survey Findings (N=20)</div>
+  <div class="card">
+    <table class="styled-table">
+      <thead>
+        <tr>
+          <th>Question</th>
+          <th>Result / Count</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>a. Purchased an item online?</td><td><span class="badge">20 / 20 — 100%</span></td></tr>
+        <tr><td>b. Shopped but not purchased online?</td><td>0 out of 20 (0%)</td></tr>
+        <tr><td>c. Weekly Shoppers</td><td>4 respondents (20%)</td></tr>
+        <tr><td>c. Monthly Shoppers</td><td>10 respondents (50%)</td></tr>
+        <tr><td>c. Yearly Shoppers</td><td>6 respondents (30%)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- DEMOGRAPHICS -->
+  <div class="section-title">Demographic Breakdown</div>
+  <div class="card">
+    <table class="styled-table" style="margin-bottom:32px">
+      <thead>
+        <tr><th>Demographic</th><th>Category</th><th>Count (%)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td rowspan="4"><strong>d. Age Range</strong></td><td>18–25</td><td>6 (30%)</td></tr>
+        <tr><td>26–39</td><td>10 (50%)</td></tr>
+        <tr><td>40–50</td><td>3 (15%)</td></tr>
+        <tr><td>Over 50</td><td>1 (5%)</td></tr>
+        <tr><td rowspan="2"><strong>e. Gender</strong></td><td>Female</td><td>12 (60%)</td></tr>
+        <tr><td>Male</td><td>8 (40%)</td></tr>
+        <tr><td rowspan="4"><strong>f. Education Level</strong></td><td>High School</td><td>3 (15%)</td></tr>
+        <tr><td>Some College</td><td>4 (20%)</td></tr>
+        <tr><td>College Graduate</td><td>10 (50%)</td></tr>
+        <tr><td>Graduate School</td><td>3 (15%)</td></tr>
+      </tbody>
+    </table>
+
+    <!-- Age bar chart -->
+    <div style="margin-top:8px;">
+      <p style="font-size:.85rem; color:var(--p600); margin-bottom:14px; font-weight:600; text-transform:uppercase; letter-spacing:.08em;">Age Distribution</p>
+      <div class="bar-wrap">
+        <div class="bar-row"><span class="bar-label">18–25</span><div class="bar-track"><div class="bar-fill" style="width:30%"></div></div><span class="bar-pct">30%</span></div>
+        <div class="bar-row"><span class="bar-label">26–39</span><div class="bar-track"><div class="bar-fill" style="width:50%"></div></div><span class="bar-pct">50%</span></div>
+        <div class="bar-row"><span class="bar-label">40–50</span><div class="bar-track"><div class="bar-fill" style="width:15%"></div></div><span class="bar-pct">15%</span></div>
+        <div class="bar-row"><span class="bar-label">Over 50</span><div class="bar-track"><div class="bar-fill" style="width:5%"></div></div><span class="bar-pct">5%</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- SHOPPING FREQUENCY DONUTS -->
+  <div class="section-title">Shopping Frequency</div>
+  <div class="pie-grid" style="margin-bottom:40px;">
+    <div class="pie-card">
+      <div class="pie-donut" style="background: conic-gradient(#b94dcc 0% 20%, rgba(100,0,160,.1) 20% 100%);">
+        <div style="position:absolute;inset:14px;background:#ffffff;border-radius:50%;display:flex;align-items:center;justify-content:center;">
+          <span style="font-size:1.2rem;font-weight:700;color:var(--p700);">20%</span>
+        </div>
+      </div>
+      <div class="pie-value" style="font-size:1.4rem;color:var(--p800);">4</div>
+      <div class="pie-label">Weekly Shoppers</div>
+    </div>
+    <div class="pie-card">
+      <div class="pie-donut" style="background: conic-gradient(#9c27b0 0% 50%, rgba(100,0,160,.1) 50% 100%);">
+        <div style="position:absolute;inset:14px;background:#ffffff;border-radius:50%;display:flex;align-items:center;justify-content:center;">
+          <span style="font-size:1.2rem;font-weight:700;color:var(--p700);">50%</span>
+        </div>
+      </div>
+      <div class="pie-value" style="font-size:1.4rem;color:var(--p800);">10</div>
+      <div class="pie-label">Monthly Shoppers</div>
+    </div>
+    <div class="pie-card">
+      <div class="pie-donut" style="background: conic-gradient(#6200a8 0% 30%, rgba(100,0,160,.1) 30% 100%);">
+        <div style="position:absolute;inset:14px;background:#ffffff;border-radius:50%;display:flex;align-items:center;justify-content:center;">
+          <span style="font-size:1.2rem;font-weight:700;color:var(--p700);">30%</span>
+        </div>
+      </div>
+      <div class="pie-value" style="font-size:1.4rem;color:var(--p800);">6</div>
+      <div class="pie-label">Yearly Shoppers</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- FAVORITE SITES -->
+  <div class="section-title">Favorite Online Shopping Sites</div>
+  <div class="card">
+    <div class="sites-list">
+      <div class="site-row"><span class="site-name">🛒 Amazon</span><div class="site-bar-track"><div class="site-bar-fill fill-amazon" style="width:70%"></div></div><span class="site-count">14 (70%)</span></div>
+      <div class="site-row"><span class="site-name">🌙 Noon</span><div class="site-bar-track"><div class="site-bar-fill fill-noon" style="width:15%"></div></div><span class="site-count">3 (15%)</span></div>
+      <div class="site-row"><span class="site-name">👗 Shein</span><div class="site-bar-track"><div class="site-bar-fill fill-shein" style="width:10%"></div></div><span class="site-count">2 (10%)</span></div>
+      <div class="site-row"><span class="site-name">🏪 Walmart</span><div class="site-bar-track"><div class="site-bar-fill fill-walmart" style="width:5%"></div></div><span class="site-count">1 (5%)</span></div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- MARKET RESEARCH -->
+  <div class="section-title">Supporting Market Research (2025–2026)</div>
+  <div class="market-grid" style="margin-bottom:40px;">
+    <div class="market-card">
+      <h3>📱 Mobile Dominance</h3>
+      <div class="stat-big">56.4%</div>
+      <p>According to <strong>Pew Research</strong> (via ReadyCloud, 2026), 91% of U.S. adults own a smartphone. <strong>eMarketer</strong> reports mobile devices accounted for 56.4% of online transactions during the 2025 holiday season.</p>
+    </div>
+    <div class="market-card">
+      <h3>📈 Market Size & Growth</h3>
+      <div class="stat-big">$1.23T</div>
+      <p><strong>eMarketer</strong> data shows U.S. retail e-commerce sales reached <strong>$1.2337 trillion in 2025</strong>, representing 16.4% of total retail sales. Global e-commerce is projected to hit <strong>$6.419 trillion in 2025</strong>.</p>
+    </div>
+    <div class="market-card">
+      <h3>🚀 Marketplace Growth</h3>
+      <div class="stat-big">4.5×</div>
+      <p>Research from <strong>Mirakl (2026)</strong> indicates that marketplaces like Amazon are growing <strong>4.5× faster</strong> than traditional e-commerce, driven by built-in discovery and high-intent traffic.</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- CONCLUSIONS -->
+  <div class="section-title">Conclusions & Analysis</div>
+  <div class="card">
+    <ul class="conclusion-list">
+      <li>
+        <div class="c-num">1</div>
+        <div class="c-text"><strong>E-Commerce is Universal:</strong> 100% of participants have purchased online, aligning with national trends showing e-commerce as a deeply embedded behavior, with 98% of adults owning cellphones and many shopping online "almost constantly" (Pew Research).</div>
+      </li>
+      <li>
+        <div class="c-num">2</div>
+        <div class="c-text"><strong>Frequency Drives Revenue:</strong> The majority (50%) shop monthly. This "subscription-like" habit supports Adobe Analytics data showing consistent year-over-year growth (5.3% in Q4 2025), suggesting habitual online spending is now a primary retail channel.</div>
+      </li>
+      <li>
+        <div class="c-num">3</div>
+        <div class="c-text"><strong>The Amazon Effect:</strong> 70% preferring Amazon validates market research showing marketplaces growing 4.5× faster than traditional e-commerce due to convenience, Prime ecosystems, and trust signals (Mirakl, 2026).</div>
+      </li>
+      <li>
+        <div class="c-num">4</div>
+        <div class="c-text"><strong>Mobile is the Present:</strong> With 91% smartphone penetration and over half of holiday sales on mobile, the survey's demographic (predominantly 26–39) represents the core mobile-first shopping generation driving this shift.</div>
+      </li>
+      <li>
+        <div class="c-num">5</div>
+        <div class="c-text"><strong>Education Correlates with Online Activity:</strong> 50% of respondents being college graduates and 100% having purchased online mirrors national data showing higher-educated consumers adopt e-commerce at higher rates and spend more per transaction.</div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Final Takeaway -->
+  <div style="background:linear-gradient(135deg,rgba(155,40,180,.08),rgba(100,0,160,.05));border:1px solid rgba(180,100,255,.25);border-left:4px solid var(--p500);border-radius:14px;padding:20px 24px;margin-bottom:40px;">
+    <p style="font-size:.95rem;color:var(--p800);line-height:1.7;">
+      📌 <strong>Final Takeaway:</strong> Ecommerce is no longer an "alternative" shopping method but the primary retail channel for most consumers under 40, driven by mobile accessibility and marketplace convenience.
+    </p>
+  </div>
+
+</main>
+
+<!-- EMAIL BUTTON -->
+<div style="background:linear-gradient(90deg,var(--p700),var(--p500));padding:32px 24px;text-align:center;">
+  <a href="mailto:fatimahmukhtar2@gmail.com"
+     style="color:#fff;font-family:'DM Sans',sans-serif;font-size:1.1rem;font-weight:700;text-decoration:none;letter-spacing:.02em;">
+    Click here to email me (fatimahmukhtar2@gmail.com) about this report
+  </a>
+</div>
+
+</body>
+</html>
