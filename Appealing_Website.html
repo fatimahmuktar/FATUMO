@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 2 - Part 1: Appealing Website</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f3e7e9 0%, #d9d2e8 100%);
+            min-height: 100vh;
+        }
+        
+        .header {
+            background: linear-gradient(90deg, #7c3aed 0%, #6d28d9 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        
+        .section-header {
+            background: linear-gradient(90deg, #10b981 0%, #059669 100%);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 8px 8px 0 0;
+            font-weight: bold;
+            font-size: 1.2em;
+            margin-bottom: 0;
+        }
+        
+        .content-box {
+            background: white;
+            border-radius: 0 0 8px 8px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            border-left: 4px solid #10b981;
+        }
+        
+        .intro-text {
+            color: #374151;
+            line-height: 1.8;
+            font-size: 1.05em;
+            margin-bottom: 20px;
+        }
+        
+        .question {
+            margin-bottom: 25px;
+            border-bottom: 1px solid #e5e7eb;
+            padding-bottom: 20px;
+        }
+        
+        .question:last-child {
+            border-bottom: none;
+        }
+        
+        .question-title {
+            font-weight: bold;
+            color: #7c3aed;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+        }
+        
+        .answer {
+            color: #374151;
+            line-height: 1.7;
+            margin-left: 20px;
+        }
+        
+        .answer a {
+            color: #0ea5e9;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .answer a:hover {
+            text-decoration: underline;
+        }
+        
+        .reason-list {
+            list-style-position: inside;
+            color: #374151;
+            line-height: 1.8;
+            margin-left: 20px;
+        }
+        
+        .reason-list li {
+            margin-bottom: 12px;
+        }
+        
+        .reason-list strong {
+            color: #10b981;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        .comparison-table th {
+            background: #f3f4f6;
+            padding: 12px;
+            text-align: left;
+            font-weight: bold;
+            color: #7c3aed;
+            border-bottom: 2px solid #e5e7eb;
+        }
+        
+        .comparison-table td {
+            padding: 12px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .comparison-table tr:hover {
+            background: #f9f5ff;
+        }
+        
+        .footer {
+            background: linear-gradient(90deg, #6d28d9 0%, #7c3aed 100%);
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 50px;
+            border-radius: 8px;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+            
+            .content-box {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Question 2 - Part 1: Appealing Website</h1>
+        <p>Apple.com - WebPage Analysis</p>
+        <p style="font-size: 1em; margin-top: 10px; opacity: 0.8;">Analyze and evaluate a well-designed website</p>
+    </div>
+    
+    <div class="container">
+        <div class="section-header">✓ Appealing Website - Apple.com</div>
+        <div class="content-box">
+            <p class="intro-text">
+                Apple.com is a premier e-commerce and information platform showcasing Apple's products and services. 
+                The website demonstrates excellent design principles with a clean layout, intuitive navigation, and 
+                professional aesthetics that enhance user experience and engagement.
+            </p>
+            
+            <div class="question">
+                <div class="question-title">a. What is the URL of the website?</div>
+                <div class="answer">
+                    <a href="https://www.apple.com/" target="_blank">https://www.apple.com/</a>
+                </div>
+            </div>
+            
+            <div class="question">
+                <div class="question-title">b. Does this page use tables? If so, for what purpose?</div>
+                <div class="answer">
+                    <strong>No.</strong> Apple.com does not use HTML tables for layout. Instead, it uses modern CSS techniques 
+                    like Flexbox and CSS Grid for page layout and content organization. This approach provides better 
+                    responsiveness and accessibility compared to outdated table-based layouts.
+                </div>
+            </div>
+            
+            <div class="question">
+                <div class="question-title">c. Does this page use CSS? If so, for what purpose?</div>
+                <div class="answer">
+                    <strong>Yes.</strong> Apple.com uses CSS extensively for:
+                    <ul class="reason-list">
+                        <li><strong>Page Layout:</strong> Flexbox and CSS Grid for responsive design</li>
+                        <li><strong>Text Styling:</strong> Custom fonts, sizes, colors, and spacing</li>
+                        <li><strong>Responsive Design:</strong> Mobile, tablet, and desktop versions</li>
+                        <li><strong>Animations and Hover Effects:</strong> Smooth transitions and interactive elements</li>
+                        <li><strong>Background Colors and Gradients:</strong> Visual hierarchy and depth</li>
+                        <li><strong>Image Positioning and Scaling:</strong> Professional image placement</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="question">
+                <div class="question-title">d. Is this page appealing or unappealing? List three reasons for your answer.</div>
+                <div class="answer">
+                    <strong style="color: #10b981;">✓ Appealing</strong>
+                    <ul class="reason-list">
+                        <li>
+                            <strong>Clean and Minimal Design with Ample Whitespace:</strong> The website uses plenty of 
+                            white space, clean typography, and a minimalist aesthetic that makes content easy to read and 
+                            navigate. The design is not cluttered, allowing users to focus on what matters.
+                        </li>
+                        <li>
+                            <strong>High-Quality Imagery and Professional Presentation:</strong> Apple.com features stunning, 
+                            high-resolution product images and photography that showcase products effectively. The visual 
+                            presentation is polished and professional, reflecting the brand's premium positioning.
+                        </li>
+                        <li>
+                            <strong>Smooth Animations and Modern Interactions:</strong> The website includes subtle, elegant 
+                            animations and hover effects that feel smooth and responsive. These interactions enhance user 
+                            engagement without being distracting or overwhelming.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="question">
+                <div class="question-title">e. If this page is unappealing, what would you do to improve it?</div>
+                <div class="answer">
+                    <strong style="color: #10b981;">N/A</strong> - This website is already appealing. No improvements are needed.
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p><strong>ECC006 - Web Design Homework Assignment #8</strong></p>
+        <p>Question 2 - Part 1: Appealing Website Analysis</p>
+        <p>© 2024 - All Rights Reserved</p>
+    </div>
+</body>
+</html>
